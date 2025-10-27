@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Рамка с ярко-синим вторым рядом кнопок</title>
+<style>
+  body {
+    font-size: 16px;
+    background-color: #87ceeb;
+    margin: 0; padding: 0;
+    font-family: 'Futura PT', sans-serif, Arial, sans-serif;
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  @keyframes neon-glow {
+    0%, 100% {
+      box-shadow: inset 0 0 0.5em 0 #ffff00, 0 0 0.5em 0 #ffff00;
+    }
+    50% {
+      box-shadow: inset 0 0 0.7em 0 #ffff66, 0 0 0.7em 0 #ffff66;
+    }
+  }
+
+  @keyframes height-change {
+    0%, 100% {
+      top: 0.125rem;
+      bottom: 0.125rem;
+    }
+    50% {
+      top: 0.0625rem;
+      bottom: 66vh;
+    }
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    left: 2rem;
+    right: 2rem;
+    border: 0.8rem solid #ffff00;
+    border-radius: 2rem;
+    pointer-events: none;
+    z-index: 9999;
+    animation: neon-glow 3s linear infinite, height-change 6s ease-in-out infinite;
+    top: 0.125rem;
+    bottom: 0.125rem;
+  }
+
+  .background-box {
+    position: fixed;
+    left: 2rem;
+    right: 2rem;
+    background-color: #00bdda;
+    border-radius: 2rem;
+    z-index: 9980;
+    pointer-events: none;
+    animation: height-change 6s ease-in-out infinite;
+    top: 0.125rem;
+    bottom: 0.125rem;
+  }
+
+  .content-wrapper {
+    position: relative;
+    z-index: 10000;
+    padding: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    min-height: 100vh;
+    background: transparent;
+  }
+
+  .header {
+    text-align: center;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin: 1.5rem 0 2rem;
+    font-weight: bold;
+    text-shadow: 0 0 0.3em #ffff00;
+  }
+
+  @keyframes button-glow {
+    0%, 100% {
+      box-shadow: inset 0 0 0.5em 0 #00ff00, 0 0 0.5em 0 #00ff00;
+      border-color: #00ff00;
+      color: #00ff00;
+    }
+    50% {
+      box-shadow: inset 0 0 1em 0 #66ff66, 0 0 1em 0 #66ff66;
+      border-color: #66ff66;
+      color: #66ff66;
+    }
+  }
+
+  .buttons-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .neon-btn {
+    background: transparent;
+    font-weight: bold;
+    font-family: 'Futura PT', sans-serif;
+    cursor: pointer;
+    border-radius: 1rem;
+    padding: 0.8rem 1rem;
+    width: 200px;
+    max-width: 90vw;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    position: relative;
+    box-sizing: border-box;
+    animation: button-glow 3s linear infinite;
+    transition: box-shadow 0.3s, color 0.3s, border-color 0.3s;
+    border: 0.4rem solid #00ff00;
+    color: #00ff00;
+    display: inline-block;
+    z-index: 1;
+  }
+
+  .neon-btn:hover,
+  .neon-btn:focus {
+    animation-play-state: paused;
+    color: #ccffcc;
+    border-color: #ccffcc;
+    box-shadow: inset 0 0 1.2em 0 #ccffcc, 0 0 1.2em 0 #ccffcc;
+    outline: none;
+  }
+
+  /* Ярко-синие кнопки второго ряда */
+  .extra-buttons-section {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    position: absolute;
+    top: 45vh;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    background-color: transparent;
+    z-index: 10001;
+    pointer-events: none;
+    width: 90vw;
+    max-width: 1200px;
+  }
+
+  .extra-buttons-section.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .extra-buttons-section .neon-btn {
+    border-color: #1e90ff; /* яркий насыщенный синий */
+    color: #1e90ff;
+    animation: button-glow-bright-blue 3s linear infinite;
+    width: 180px;
+  }
+
+  @keyframes button-glow-bright-blue {
+    0%, 100% {
+      box-shadow: inset 0 0 0.6em 0 #1e90ff, 0 0 0.6em 0 #1e90ff;
+      border-color: #1e90ff;
+      color: #1e90ff;
+    }
+    50% {
+      box-shadow: inset 0 0 1.2em 0 #66b3ff, 0 0 1.2em 0 #66b3ff;
+      border-color: #66b3ff;
+      color: #66b3ff;
+    }
+  }
+
+  .extra-buttons-section .neon-btn:hover,
+  .extra-buttons-section .neon-btn:focus {
+    animation-play-state: paused;
+    color: #99ccff;
+    border-color: #99ccff;
+    box-shadow: inset 0 0 1.5em 0 #99ccff, 0 0 1.5em 0 #99ccff;
+    outline: none;
+  }
+
+  @media (max-width: 600px) {
+    .buttons-row,
+    .extra-buttons-section {
+      flex-direction: column;
+      align-items: center;
+    }
+    .neon-btn {
+      width: 90vw;
+      max-width: none;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="background-box"></div>
+
+  <div class="content-wrapper">
+    <div class="header">Меню слепой печати Английских слов</div>
+    <div class="buttons-row">
+      <a href="/3_cards/lang-rus_version/english-rus_ver/blind_typing-ru-v/1_eng/1_1-10000/27_blind_eng_inorder.html" class="neon-btn">1-10000</a>
+      <a href="#" class="neon-btn">1-5000</a>
+      <a href="#" class="neon-btn">5000-10000</a>
+      <a href="#" class="neon-btn">10000</a>
+    </div>
+  </div>
+
+  <section class="extra-buttons-section" aria-label="Дополнительные кнопки">
+    <a href="/3_cards/lang-rus_version/main-menu_rus_2.html" class="neon-btn">В меню</a>
+    <a href="#" class="neon-btn">Кнопка B</a>
+    <a href="#" class="neon-btn">Кнопка C</a>
+    <a href="#" class="neon-btn">Кнопка D</a>
+  </section>
+
+<script>
+  const extraButtons = document.querySelector('.extra-buttons-section');
+  const animationDuration = 6000; // 6 секунд
+
+  function remToPx(rem) {
+    return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+  }
+
+  function getCurrentBottomPx(animationTime) {
+    const bottomMinPx = remToPx(0.125); // 2px
+    const bottomMaxPx = window.innerHeight * 0.66; // 66vh
+
+    let bottomPx;
+    if (animationTime <= animationDuration / 2) {
+      bottomPx = bottomMinPx + (bottomMaxPx - bottomMinPx) * (animationTime / (animationDuration / 2));
+    } else {
+      bottomPx = bottomMaxPx - (bottomMaxPx - bottomMinPx) * ((animationTime - animationDuration / 2) / (animationDuration / 2));
+    }
+    return bottomPx;
+  }
+
+  function checkFrameState() {
+    const now = performance.now();
+    const animationTime = now % animationDuration;
+
+    const bottomPx = getCurrentBottomPx(animationTime);
+    const extraButtonsRect = extraButtons.getBoundingClientRect();
+    const extraButtonsTop = extraButtonsRect.top;
+
+    const frameBottom = window.innerHeight - bottomPx;
+
+    if (frameBottom <= extraButtonsTop) {
+      if (!extraButtons.classList.contains('visible')) {
+        extraButtons.classList.add('visible');
+      }
+    } else {
+      if (extraButtons.classList.contains('visible')) {
+        extraButtons.classList.remove('visible');
+      }
+    }
+
+    requestAnimationFrame(checkFrameState);
+  }
+
+  checkFrameState();
+
+  window.addEventListener('resize', () => {
+    // При изменении размера окна анимация корректно пересчитается
+  });
+</script>
+</body>
+</html>
