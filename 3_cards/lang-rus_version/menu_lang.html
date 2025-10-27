@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню</title>
+    <style>
+        body {
+            background-color: #00bdda;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #ffffff; /* Цвет текста заголовка */
+            text-align: center; /* Центрирование текста */
+            margin-top: 20px; /* Отступ сверху */
+            font-family: 'Futura PT'; /* Шрифт заголовка */
+        }
+
+        .neon-btn {
+            color: #0000ff; /* Синий цвет текста */
+            border: .4rem solid #00ff00; /* Кислотно-зеленый цвет рамки */
+            border-radius: 1rem;
+            background: transparent;
+            font-size: 1.3rem;
+            font-weight: bold;
+            padding: .8rem;
+            font-family: 'Futura PT';
+            position: relative;
+            cursor: pointer;
+            box-shadow: inset 0 0 0.5em 0 #00ff00, 0 0 0.5em 0 #00ff00; /* Кислотно-зеленый цвет тени */
+            width: 100%; /* Устанавливаем ширину кнопок на 100% */
+            max-width: 300px; /* Максимальная ширина кнопки */
+            text-align: center; /* Центрирование текста */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column; /* Изменено на колонку для размещения заголовка и панели */
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .panel {
+            width: 50%;
+            height: auto;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .left-panel {
+            background-color: #00bdda;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem; /* Отступ между кнопками */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .left-panel .neon-btn.active {
+            color: #ff00ff; /* Розовый цвет текста для активной кнопки */
+            border-color: #ff00ff; /* Розовый цвет рамки для активной кнопки */
+            box-shadow: inset 0 0 0.5em 0 #ff00ff, 0 0 0.5em 0 #ff00ff; /* Розовый цвет тени для активной кнопки */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Меню языков</h1> <!-- Заголовок добавлен здесь -->
+        <div class="panel left-panel">
+            <button class="neon-btn" data-panel="1">Азербайджанский</button>
+            <button class="neon-btn" data-panel="2" data-link="/3_cards/lang-rus_version/english-rus_ver/menu_eng.html">Английский</button>
+            <button class="neon-btn" data-panel="3">Испанский</button>
+            <button class="neon-btn" data-panel="4">Итальянский</button>
+            <button class="neon-btn" data-panel="5">Китайский</button>
+            <button class="neon-btn" data-panel="6">Корейский</button>
+            <button class="neon-btn" data-panel="7">Португальский</button>
+            <button class="neon-btn" data-panel="8">Румынский</button>
+            <button class="neon-btn" data-panel="9">Хинди</button>
+            <button class="neon-btn" data-panel="10">Японский</button>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = -1; // Начальное значение -1, чтобы при загрузке не было активного элемента
+        const menuItems = document.querySelectorAll('.neon-btn');
+
+        // Функция для обновления состояния активного элемента
+        function updateActiveItem() {
+          menuItems.forEach((item, index) => {
+              item.classList.remove('active');
+              if (index === currentIndex) {
+                  item.classList.add('active');
+                  item.focus();
+              }
+          });
+        }
+
+        // Обработчик событий клавиатуры
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+              event.preventDefault();
+
+              // Устанавливаем currentIndex на первый элемент при первом нажатии стрелки вниз
+              if (currentIndex === -1 && event.key === 'ArrowDown') {
+                  currentIndex = 0; // Переход к первому элементу
+              } else if (event.key === 'ArrowDown') {
+                  currentIndex = (currentIndex + 1) % menuItems.length; // Циклический переход вниз
+              } else if (event.key === 'ArrowUp') {
+                  if (currentIndex === -1) { // Если еще не выбран элемент
+                      currentIndex = menuItems.length - 1; // Устанавливаем на последний элемент
+                  } else {
+                      currentIndex = (currentIndex - 1 + menuItems.length) % menuItems.length; // Циклический переход вверх
+                  }
+              }
+
+              updateActiveItem(); // Обновляем активный элемент
+          } else if (event.key === 'Enter' && currentIndex !== -1) { // Проверяем, что текущий индекс не -1
+              const selectedButton = menuItems[currentIndex];
+              const link = selectedButton.getAttribute('data-link');
+              if (link) {
+                  window.location.href = link; // Переход по ссылке, если она есть
+              }
+          }
+        });
+
+        // Обработчик событий клика на кнопки меню
+        menuItems.forEach((item, index) => {
+          item.addEventListener('click', () => {
+              currentIndex = index; // Устанавливаем текущий индекс на индекс нажатой кнопки
+              updateActiveItem(); // Обновляем активный элемент
+
+              const link = item.getAttribute('data-link');
+              if (link) {
+                  window.location.href = link; // Переход по ссылке, если она есть
+              }
+          });
+        });
+
+        window.addEventListener('keydown', function(event) {
+          // Проверяем, была ли нажата клавиша ESC
+          if (event.code === 'Escape') {
+              event.preventDefault(); // Отменяем стандартное поведение
+              window.location.href = '/3_cards/lang-rus_version/main-menu_rus_2.html'; // Переход по ссылке при нажатии ESC
+          }
+        });
+    </script>
+</body>
+</html>

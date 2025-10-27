@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #195a62;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            min-width: 150px; /* Добавлено для одинаковой ширины кнопок */
+            text-align: center; /* Добавлено для центрирования текста */
+        }
+        
+        .button.active {
+            border-radius: 50px;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .neon-2 {
+            font-size: 40px;
+            font-weight: bold;
+            line-height: 50px;
+            color: #FFF;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            animation: neon-2 2s alternate-reverse infinite;
+        }
+        
+        @keyframes neon-2 {
+            from {
+                text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #BFE2FF;
+            }
+            to {
+                text-shadow: 0 0 20px #BFE2FF, 0 0 35px #BFE2FF, 0 0 40px #BFE2FF, 0 0 50px #BFE2FF, 0 0 800px #BFE2FF;
+            }
+        }
+        
+        .neon-3 {
+            font-size: 40px;
+            font-weight: bold;
+            line-height: 50px;
+            color: #f3b480;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            animation: neon-2 4s alternate-reverse infinite;
+        }
+        
+        @keyframes neon-3 {
+            from {
+                text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #f3b480;
+            }
+            to {
+                text-shadow: 0 0 20px #f3b480, 0 0 35px #f3b480, 0 0 40px #f3b480, 0 0 50px #f3b480, 0 0 800px #f3b480;
+            }
+        }
+        
+        .neon-4 {
+            font-size: 40px;
+            font-weight: bold;
+            line-height: 50px;
+            color: #FFF;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            animation: neon-4 4s linear infinite;
+        }
+        
+        @keyframes neon-4 {
+            0% {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+            }
+            100% {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 35px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 75px #ff00de;
+            }
+        }
+        
+        .neon-5 {
+            font-size: 40px;
+            font-weight: bold;
+            line-height: 50px;
+            color: #77f48e;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            animation: neon-5 2s linear infinite;
+        }
+        
+        @keyframes neon-5 {
+            0% {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #77f48e, 0 0 70px #77f48e, 0 0 80px #77f48e, 0 0 100px #77f48e, 0 0 150px #77f48e;
+            }
+            100% {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #77f48e, 0 0 35px #77f48e, 0 0 40px #77f48e, 0 0 50px #77f48e, 0 0 75px #77f48e;
+            }
+        }
+        
+        .lang-select {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .lang-label {
+            margin-right: 10px;
+        }
+        
+        .lang-select select {
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lang-select">
+        <label class="lang-label" for="lang-select">Select language:</label>
+        <select id="lang-select">
+            <option value="ru">Русский</option>
+            <option value="en">English</option>
+            <option value="az">Азербайджанский</option>
+            <option value="es">Español</option>
+            <option value="it">Italiano</option>
+            <option value="zh">中文</option>
+            <option value="ko">한국어</option>
+            <option value="pt">Português</option>
+            <option value="ro">Română</option>
+            <option value="hi">हिंदी</option>
+            <option value="jp">日本語</option>
+        </select>
+    </div>
+
+    <a href="/3_cards/lang-rus_version/menu_lang.html" class="button neon-4">Языки</a>
+    <a href="#" class="button neon-3">Мнемотехника</a>
+    <a href="#" class="button neon-4">Страны</a>
+    <a href="#" class="button neon-5">Roadmaps</a>
+    <a href="#" class="button neon-3">Анатомия</a>
+
+    <script>
+        let currentIndex = -1; // Начинаем с -1, чтобы указать, что ничего не выбрано
+        const menuItems = document.querySelectorAll('.button');
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+                event.preventDefault();
+
+                // Если currentIndex равен -1, это значит, что ничего не выбрано
+                if (currentIndex === -1) {
+                    currentIndex = 0; // Устанавливаем на первый элемент при первом нажатии клавиши
+                } else {
+                    menuItems[currentIndex].classList.remove('active');
+                    if (event.key === 'ArrowUp') {
+                        currentIndex = (currentIndex -1 + menuItems.length) % menuItems.length; 
+                    } else if (event.key === 'ArrowDown') { 
+                        currentIndex = (currentIndex +1) % menuItems.length; 
+                    } 
+                }
+
+                menuItems[currentIndex].classList.add('active'); 
+                menuItems[currentIndex].focus(); 
+            } else if (event.key === 'Enter') { 
+                if (currentIndex !== -1) { // Проверяем, выбран ли элемент
+                    menuItems[currentIndex].click(); 
+                } 
+            } else if (event.key === 'Escape') { 
+                window.location.href = '/3_cards/index_guest.html'; 
+            } 
+        });
+
+        document.getElementById('lang-select').addEventListener('change', function() {
+            const selectedLang = this.value;
+            if (selectedLang === 'ru') {
+                // Для русского языка не происходит переход, так как это текущая страница
+            } else if (selectedLang === 'en') {
+                window.location.href = '/3_cards/lang-rus_version/main-menu_2_eng_vers.html';
+            } else if (selectedLang === 'az') {
+                alert('Азербайджанская версия страницы не доступна');
+            } else if (selectedLang === 'es') {
+                alert('Испанская версия страницы не доступна');
+            } else if (selectedLang === 'it') {
+                alert('Итальянская версия страницы не доступна');
+            } else if (selectedLang === 'zh') {
+                alert('Китайская версия страницы не доступна');
+            } else if (selectedLang === 'ko') {
+                alert('Корейская версия страницы не доступна');
+            } else if (selectedLang === 'pt') {
+                alert('Португальская версия страницы не доступна');
+            } else if (selectedLang === 'ro') {
+                alert('Румынская версия страницы не доступна');
+            } else if (selectedLang === 'hi') {
+                alert('Хинди версия страницы не доступна');
+            } else if (selectedLang === 'jp') {
+                alert('Японская версия страницы не доступна');
+            }
+        });
+    </script>
+
+</body>
+</html>

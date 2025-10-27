@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Поиск английского слова</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #51a7c7;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+  text-align: center;
+  color: lime;
+  font-size: 48px;
+  text-shadow:
+    2px 2px 0 rgb(9, 37, 176),
+    -2px 2px 0 rgb(9, 37, 176),
+    -2px -2px 0 rgb(9, 37, 176),
+    2px -2px 0 rgb(9, 37, 176);
+}
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgb(118, 191, 255);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      border: 2px solid black;
+    }
+
+    .input-container {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      flex-grow: 1;
+      padding: 20px;
+      border-radius: 10px;
+      /* Закругление углов */
+      border: none;
+      /* Убираем обводку у input */
+      font-size: 24px;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus {
+      outline: none;
+    }
+
+    /* Стилизуем input-container для обводки */
+    .input-container input[type="text"] {
+      border: 2px solid #5250d3;
+      /* Обводка */
+    }
+
+    /* Скрываем стандартные стрелки */
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type="number"] {
+      -moz-appearance: textfield;
+      /* Firefox */
+    }
+
+    button {
+      width: 150px;
+      padding: 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 24px;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    button:hover {
+      background-color: #50a5ff;
+    }
+
+    .clear-button {
+      width: 40px;
+      padding: 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 24px;
+      font-weight: bold;
+      margin-left: 10px;
+      /* Добавь эти строки, чтобы центрировать X */
+      display: flex;
+      align-items: center;
+      /* Центрирует контент по вертикали */
+      justify-content: center;
+      /* Центрирует контент по горизонтали */
+    }
+
+    .clear-button:hover {
+      background-color: #50a5ff;
+    }
+
+    #result {
+      margin-top: 40px;
+      font-weight: bold;
+      font-size: 32px;
+    }
+
+    .found {
+      color: green;
+      font-size: 80px;
+    }
+
+    .not-found {
+      color: red;
+      font-size: 80px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      width: calc(100% - 20px);
+    }
+
+    .button-container button {
+      flex-grow: 1;
+      margin-right: 10px;
+    }
+
+    .button-container button:last-child {
+      margin-right: 0;
+    }
+
+    /* Стили для выравнивания блока ввода номера */
+    .number-input-container {
+      display: flex;
+      flex-grow: 1;
+      /* Занимает доступное место */
+      border-radius: 10px;
+      /* Закругление углов */
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      /* Тень как у контейнера поиска */
+      border: 2px solid #5250d3;
+      /* Рамка как у контейнера поиска */
+      overflow: hidden;
+      /* Обрезаем все, что выходит за границы */
+      background-color: white;
+      /* Белый фон */
+    }
+
+    .number-input-container input[type="number"] {
+      flex-grow: 1;
+      /* Поле ввода расширяется, чтобы заполнить пространство */
+      padding: 20px;
+      font-size: 24px;
+      border: none;
+      /* Убираем внутреннюю обводку */
+      background-color: white;
+      /* Белый фон */
+    }
+
+    .number-input-buttons {
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+      /* Белый фон */
+    }
+
+    .number-input-buttons button {
+      width: 30px;
+      height: 30px;
+      padding: 0;
+      margin: 0;
+      font-size: 16px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      /* Белый фон */
+      color: #007bff;
+      /* Синий текст */
+      border: none;
+      /* Убираем обводку */
+      cursor: pointer;
+      /* Добавляем курсор указателя */
+    }
+
+    .number-input-buttons button:first-child {
+      margin-top: 5px;
+      /* Добавляем отступ сверху только для первой кнопки */
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Поиск английского слова</h1>
+    <div class="input-container">
+      <input type="text" id="searchInput" placeholder="Введите слово для поиска" onkeypress="handleKeyPress(event)">
+      <button class="clear-button" onclick="clearSearchInput()">×</button>
+      <button onclick="searchWord()">НАЙТИ</button>
+    </div>
+
+    <div class="input-container">
+      <div class="number-input-container">
+        <input type="number" id="indexInput" placeholder="Введите номер слова для поиска" min="1" max="10000"
+          onkeypress="handleIndexKeyPress(event)">
+        <div class="number-input-buttons">
+          <button type="button" onclick="incrementIndex()">+</button>
+          <button type="button" onclick="decrementIndex()">-</button>
+        </div>
+      </div>
+      <button class="clear-button" onclick="clearIndexInput()">×</button>
+      <button onclick="goToWord()">ПЕРЕЙТИ</button>
+    </div>
+
+    <div class="button-container">
+      <button onclick="showPreviousWord()">ПРЕДЫДУЩЕЕ</button>
+      <button onclick="showNextWord()">СЛЕДУЮЩЕЕ</button>
+      <button onclick="pronounceEnglishWord()">ОЗВУЧИТЬ</button>
+    </div>
+
+    <div id="result"></div>
+  </div>
+
+  <script src="words.js"></script>
+  <!-- Подключение массива слов -->
+  <script>
+    let currentIndex = -1;
+
+    window.onload = function () {
+      // Устанавливаем фокус на поле поиска слова при загрузке страницы
+      document.getElementById("searchInput").focus();
+    };
+
+    // Очищаем поля ввода перед обновлением страницы
+    window.addEventListener('beforeunload', function () {
+      document.getElementById("searchInput").value = '';
+      document.getElementById("indexInput").value = '';
+    });
+
+    function searchWord() {
+      const input = document.getElementById("searchInput").value.trim().toLowerCase();
+      const resultElement = document.getElementById("result");
+
+      if (input === "") {
+        resultElement.innerHTML = "";
+        return;
+      }
+
+      const index = words.indexOf(input);
+
+      if (index !== -1) {
+        currentIndex = index;
+        resultElement.innerHTML = `Слово ${currentIndex + 1}: <span class="found">${input}</span> есть.`;
+      } else {
+        resultElement.innerHTML = `Слова <span class="not-found">${input}</span> нет.`;
+      }
+    }
+
+    function goToWord() {
+      const indexInput = document.getElementById("indexInput").value.trim();
+
+      if (indexInput === "" || isNaN(indexInput)) return;
+
+      const index = parseInt(indexInput) - 1;
+
+      if (index >= 0 && index < words.length) {
+        currentIndex = index; // Устанавливаем текущий индекс
+        displayWord();
+      } else {
+        document.getElementById("result").innerHTML = `Неверный номер слова.`;
+      }
+    }
+
+    function showNextWord() {
+      currentIndex++;
+
+      if (currentIndex >= words.length) {
+        currentIndex = 0;
+      }
+
+      displayWord();
+    }
+
+    function showPreviousWord() {
+      currentIndex--;
+
+      if (currentIndex < 0) {
+        currentIndex = words.length - 1;
+      }
+
+      displayWord();
+    }
+
+    function displayWord() {
+      const resultElement = document.getElementById("result");
+
+      if (currentIndex >= 0 && currentIndex < words.length) {
+        const nextWord = words[currentIndex];
+        resultElement.innerHTML = `Слово ${currentIndex + 1}: <span class="found">${nextWord}</span>`;
+      }
+    }
+
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        searchWord();
+      }
+    }
+
+    function handleIndexKeyPress(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault(); // Предотвращаем переход фокуса
+        goToWord();
+      }
+    }
+
+    function clearSearchInput() {
+      document.getElementById("searchInput").value = '';
+      document.getElementById("searchInput").focus(); // Добавляем фокус
+    }
+
+    function clearIndexInput() {
+      document.getElementById("indexInput").value = '';
+      document.getElementById("indexInput").focus(); // Добавляем фокус
+    }
+
+    function pronounceEnglishWord() {
+      const resultElement = document.getElementById("result");
+
+      // Если в поле результата есть текст, берем его
+      const regex = /<span class="found">(\w+)<\/span>/;
+      const match = resultElement.innerHTML.match(regex);
+
+      if (match && match.length > 1) {
+        const word = match[1];
+
+        const index = words.indexOf(word.toLowerCase());
+
+        if (index !== -1) {
+          var url = "https://translate.google.com/translate_tts?ie=UTF-8&q=" + word + "&tl=en&client=tw-ob";
+          var audio = new Audio(url);
+          audio.play();
+        }
+      }
+    }
+
+    document.addEventListener('click', function (event) {
+      const searchInput = document.getElementById("searchInput");
+      const indexInput = document.getElementById("indexInput");
+
+      // Устанавливаем фокус на поле ввода только если кликнули на него
+      if (event.target === searchInput || event.target === indexInput) {
+        event.target.focus();
+      }
+    });
+
+    let spaceKeyPressed = false; // Флаг для отслеживания нажатия пробела
+
+    window.addEventListener('keydown', function (event) {
+      if (event.key === ' ') { // Клавиша пробел
+        event.preventDefault(); // Отменяем стандартное действие
+        spaceKeyPressed = true; // Устанавливаем флаг при нажатии
+      }
+      /*  else if (event.key === 'ArrowRight') { // Стрелка вправо
+           event.preventDefault(); // Отменяем стандартное действие
+           showNextWord(); // Показать следующее слово
+       } else if (event.key === 'ArrowLeft') { // Стрелка влево
+           event.preventDefault(); // Отменяем стандартное действие
+           showPreviousWord(); // Показать предыдущее слово
+       } */
+      else if (event.code === 'Escape') { // Клавиша Escape
+        event.preventDefault();
+        window.location.href = '/home/ogr/Документы/11_Документы_28_11_2024/проекты /1_cards/main-menu_2.html';
+      } else if (event.code === 'ArrowUp') { // Клавиша стрелка вверх
+        event.preventDefault();
+        window.location.href = '/home/ogr/Документы/11_Документы_28_11_2024/проекты /1_cards/языки/английский/menu_eng.html';
+      } else if (event.code === 'ArrowDown') { // Клавиша стрелка вниз
+        event.preventDefault();
+        window.location.href = '/home/ogr/Документы/11_Документы_28_11_2024/проекты /1_cards/языки/menu_lang.html';
+      }
+    });
+
+    window.addEventListener('keyup', function (event) {
+      if (event.key === ' ' && spaceKeyPressed) { // Клавиша пробел и флаг установлен
+        event.preventDefault(); // Отменяем стандартное действие
+        pronounceEnglishWord(); // Вызываем функцию озвучки
+        spaceKeyPressed = false; // Сбрасываем флаг
+      }
+    });
+
+
+    function incrementIndex() {
+      let indexInput = document.getElementById("indexInput");
+      let currentValue = parseInt(indexInput.value) || 0; // Начинаем с 0, если поле пустое
+
+      if (currentValue === 0) {
+        indexInput.value = 1; // Устанавливаем 1, если текущее значение 0
+      } else {
+        indexInput.value = currentValue + 1;
+      }
+    }
+
+    function decrementIndex() {
+      let indexInput = document.getElementById("indexInput");
+      let currentValue = parseInt(indexInput.value) || 1; // Начинаем с 1, если поле пустое
+
+      if (currentValue <= 1) {
+        indexInput.value = 1;
+      } else {
+        indexInput.value = currentValue - 1;
+      }
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Меню английский</title>
+<style>
+ body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #2269b5;
+  margin: 0;
+ }
+
+.header {
+  text-align: center;
+  font-size: 3rem;
+  color: #ffffff;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.button {
+  display: inline-block;
+  padding: 15px 30px;
+  margin: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 24px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.button.active {
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.neon-2 {
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 75px;
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+}
+
+@keyframes neon-2 {
+    from {
+        text-shadow: 
+            0 0 7.5px #FFF, 
+            0 0 15px #FFF, 
+            0 0 22.5px #FFF, 
+            0 0 30px #BFE2FF;
+    }
+    to {
+        text-shadow:
+            0 0 30px #BFE2FF, 
+            0 0 52.5px #BFE2FF, 
+            0 0 60px #BFE2FF, 
+            0 0 75px #BFE2FF, 
+            0 0 1200px #BFE2FF;
+    }
+}
+
+.neon-3 {
+    font-size:60px;
+    font-weight:bold; 
+    line-height:75px;
+    color:#f3b480; 
+    font-family:'Roboto',sans-serif; 
+}
+
+.neon-4,
+.neon-5,  
+.neon-6 {
+    font-size:60px;
+    font-weight:bold; 
+    line-height:75px;
+    font-family:'Roboto',sans-serif; 
+    text-transform:uppercase; 
+    border-radius: 30px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.neon-4 {
+    color:#00FF00; /* Ярко зеленый цвет */
+}
+
+.neon-5 {
+    color:#FFA500; /* Ярко оранжевый цвет */
+}
+
+.neon-6 {
+    color:#FF1493; /* Ярко-розовый цвет для новой кнопки */
+}
+
+@keyframes neon-4 { 
+    from { 
+        text-shadow:
+            -2.25px -2.25px rgba(255,255,255,.6), 
+            -5.25px -5.25px rgba(255,255,255,.6), 
+            -8.25px -8.25px rgba(255,255,255,.6); 
+    } 
+    to { 
+        text-shadow:
+            -2.25px -2.25px rgba(255,255,255,.6), 
+            -5.25px -5.25px rgba(255,255,255,.6), 
+            -11.25px -11.25px rgba(255,255,255,.6);  
+} }
+
+/* Дополнительные слои для анимации */
+
+@keyframes neon-layer1 {
+    from {
+        text-shadow:
+            -1.5px -1.5px rgba(255,165,0,.4),
+            -3.5px -3.5px rgba(255,165,0,.4),
+            -5.5px -5.5px rgba(255,165,0,.4);
+    }
+    to {
+        text-shadow:
+            -1.5px -1.5px rgba(255,165,0,.8),
+            -3.5px -3.5px rgba(255,165,0,.8),
+            -7.5px -7.5px rgba(255,165,0,.8);
+    }
+}
+
+@keyframes neon-layer2 {
+    from {
+        text-shadow:
+            -3px -3px rgba(0,255,0,.4),
+            -6px -6px rgba(0,255,0,.4),
+            -9px -9px rgba(0,255,0,.4);
+    }
+    to {
+        text-shadow:
+            -3px -3px rgba(0,255,0,.8),
+            -6px -6px rgba(0,255,0,.8),
+            -9px -9px rgba(0,255,0,.8);
+    }
+}
+
+@keyframes neon-layer3 {
+    from {
+        text-shadow:
+            -4.5px -4.5px rgba(173,216,230,.4),
+            -9.5px -9.5px rgba(173,216,230,.4),
+            -14.5px -14.5px rgba(173,216,230,.4);
+    }
+    to {
+        text-shadow:
+            -4.5px -4.5px rgba(173,216,230,.8),
+            -9.5px -9.5px rgba(173,216,230,.8),
+            -14.5px -14.5px rgba(173,216,230,.8);
+    }
+}
+
+/* Применение новых анимаций к кнопкам */
+
+.neon-4 {
+    animation: neon-layer1 .8s linear infinite alternate,
+              neon-layer2 .8s linear infinite alternate,
+              neon-layer3 .8s linear infinite alternate;
+}
+
+.neon-5 {
+    animation: neon-layer1 .8s linear infinite alternate,
+              neon-layer2 .8s linear infinite alternate,
+              neon-layer3 .8s linear infinite alternate;
+}
+
+.neon-6 {
+   animation: neon-layer1 .8s linear infinite alternate,
+              neon-layer2 .8s linear infinite alternate,
+              neon-layer3 .8s linear infinite alternate;
+}
+
+/* Стили для наведения на кнопки */
+
+.button:hover {
+    background-color: pink;
+}
+
+</style>
+</head>
+<body>
+<div class="header">Меню английского</div>
+<div class="container">
+<a href="/3_cards/lang-rus_version/english-rus_ver/search.html" class="button neon-6">Поиск слова</a>
+<a href="/3_cards/lang-rus_version/english-rus_ver/blind_typing-ru-v/1_eng/28_blind_eng_inorder.html" class="button neon-4">Слепая печать</a>
+<a href="#">Слова-карточки</a>
+</div>
+
+<script>
+let currentIndex = -1;
+const menuItems = document.querySelectorAll('.button');
+
+function updateActiveItem() {
+    menuItems.forEach((item, index) => {
+        item.classList.remove('active');
+        if (index === currentIndex) {
+            item.classList.add('active');
+            item.focus();
+        }
+    });
+}
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+        event.preventDefault();
+
+        if (currentIndex === -1 && event.key === 'ArrowDown') {
+            currentIndex = 0;
+        } else if (event.key === 'ArrowDown') {
+            currentIndex = (currentIndex + 1) % menuItems.length;
+        } else if (event.key === 'ArrowUp') {
+            currentIndex = (currentIndex - 1 + menuItems.length) % menuItems.length;
+        }
+
+        updateActiveItem();
+    } else if (event.key === 'Enter' && currentIndex !== -1) {
+        menuItems[currentIndex].click();
+    } else if (event.key === 'Escape') {
+        event.preventDefault();
+        window.location.href = '/3_cards/main-menu_2.html';
+    }
+});
+
+</script>
+
+</body>
+</html>
