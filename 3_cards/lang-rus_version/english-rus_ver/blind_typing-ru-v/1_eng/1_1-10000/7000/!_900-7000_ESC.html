@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Слепая печать</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Слепая печать</h1>
+  <p>900-7000</p>
+  <p id="wordSet"></p> <!-- Обновленный элемент для отображения названия текущей десятки слов -->
+  <div id="word"></div>
+  <input type="text" id="input" autofocus>
+  <div id="result"></div>
+
+  <div class="go-to-top-button-container">
+    <a href="/home/george/Документы/проекты /1_cards/слепая печать/27.html" class="go-to-top-button">В меню</a>
+    <a href="/home/george/Документы/проекты /1_cards/index_skills.html" class="go-to-home-button">На главную</a>
+</div>
+
+<div class="color-buttons">
+<div class="color-button" style="background-color: #E6E6FA;" onclick="changeBackgroundColor('#E6E6FA')"></div>
+<div class="color-button" style="background-color: #8cadcb;" onclick="changeBackgroundColor('#8cadcb')"></div>
+<div class="color-button" style="background-color: #8cbecb;" onclick="changeBackgroundColor('#8cbecb')"></div>
+<div class="color-button" style="background-color: #75ccd9;" onclick="changeBackgroundColor('#75ccd9')"></div>
+<div class="color-button" style="background-color: #63c5c5;" onclick="changeBackgroundColor('#63c5c5')"></div>
+<div class="color-button" style="background-color: #2196a6;" onclick="changeBackgroundColor('#2196a6')"></div>
+<div class="color-button" style="background-color: #008080;" onclick="changeBackgroundColor('#008080')"></div>
+<div class="color-button" style="background-color: #58a2e8;" onclick="changeBackgroundColor('#58a2e8')"></div>
+<div class="color-button" style="background-color: #2e6fab;" onclick="changeBackgroundColor('#2e6fab')"></div>
+<div class="color-button" style="background-color: #7b4baa;" onclick="changeBackgroundColor('#7b4baa')"></div>
+</div>
+
+  <script>
+   var words = [
+    "men",  "shrimps",  "undress",  "bending",  "reign",  "dairy",  "hearth",  "unbearable",  "favourable",  "jab", 
+    "imply",  "mispronouncing",  "disguise",  "heavy",  "microwave",  "generous",  "signal",  "flung",  "antic",  "chow", 
+    "traitor",  "dean",  "storing",  "rapt",  "striking",  "peak",  "hippogriff",  "curiosity",  "gemini",  "pier", 
+    "invasion",  "humour",  "anything",  "species",  "acne",  "drinking",  "closer",  "hemorrhages",  "share",  "memory", 
+    "dilemma",  "alternatively",  "authorities",  "excursion",  "praying",  "honor",  "thrilled",  "cellular",  "asexual",  "conquer", 
+    "porcelain",  "hereby",  "authors",  "blink",  "maintenant",  "revolutionary",  "actually",  "architectural",  "glow",  "almost", 
+    "resemble",  "pavement",  "aggravation",  "supreme",  "spare",  "drip",  "mainland",  "identifier",  "drift",  "soft", 
+    "ski",  "ghost",  "prank",  "gabby",  "inevitably",  "virus",  "published",  "simultaneous",  "dire",  "verb", 
+    "descend",  "butt",  "export",  "audit",  "refresh",  "clearing",  "prior",  "affectionately",  "exercise",  "cash", 
+    "representing",  "brother",  "immunity",  "green",  "dictate",  "unbroken",  "suite",  "dam",  "options",  "sin", 
+   ]
+
+document.addEventListener('keydown', function(event) {
+if (event.key === 'ArrowRight') { // Если нажали Enter
+window.location.href = "!_1000-7000_ESC.html";
+event.preventDefault(); // Предотвращаем действие по умолчанию, если это поле ввода
+}
+});
+
+  </script>
+  <button onclick="startGame()">Старт</button>
+  <script src="/home/george/Документы/проекты /1_cards/языки/английский/слепая печать/input/2_functions.js"></script>
+
+</body>
+</html>

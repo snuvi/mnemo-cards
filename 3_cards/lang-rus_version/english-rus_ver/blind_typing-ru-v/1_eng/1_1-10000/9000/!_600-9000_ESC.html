@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Слепая печать</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Слепая печать</h1>
+  <p>600-9000</p>
+  <p id="wordSet"></p> <!-- Обновленный элемент для отображения названия текущей десятки слов -->
+  <div id="word"></div>
+  <input type="text" id="input" autofocus>
+  <div id="result"></div>
+
+  <div class="go-to-top-button-container">
+    <a href="/home/george/Документы/проекты /1_cards/слепая печать/27.html" class="go-to-top-button">В меню</a>
+    <a href="/home/george/Документы/проекты /1_cards/index_skills.html" class="go-to-home-button">На главную</a>
+</div>
+
+<div class="color-buttons">
+<div class="color-button" style="background-color: #E6E6FA;" onclick="changeBackgroundColor('#E6E6FA')"></div>
+<div class="color-button" style="background-color: #8cadcb;" onclick="changeBackgroundColor('#8cadcb')"></div>
+<div class="color-button" style="background-color: #8cbecb;" onclick="changeBackgroundColor('#8cbecb')"></div>
+<div class="color-button" style="background-color: #75ccd9;" onclick="changeBackgroundColor('#75ccd9')"></div>
+<div class="color-button" style="background-color: #63c5c5;" onclick="changeBackgroundColor('#63c5c5')"></div>
+<div class="color-button" style="background-color: #2196a6;" onclick="changeBackgroundColor('#2196a6')"></div>
+<div class="color-button" style="background-color: #008080;" onclick="changeBackgroundColor('#008080')"></div>
+<div class="color-button" style="background-color: #58a2e8;" onclick="changeBackgroundColor('#58a2e8')"></div>
+<div class="color-button" style="background-color: #2e6fab;" onclick="changeBackgroundColor('#2e6fab')"></div>
+<div class="color-button" style="background-color: #7b4baa;" onclick="changeBackgroundColor('#7b4baa')"></div>
+</div>
+
+  <script>
+ var words = [
+ "grandeur",  "palm",  "sneer",  "perilous",  "pitcher",  "intellect",  "spinal",  "controversy",  "heavily",  "lo", 
+ "tolerable",  "spaniard",  "trauma",  "hag",  "inventory",  "course",  "ask",  "suspicious",  "mortgage",  "inspiring", 
+ "withdraw",  "knick",  "suspicious",  "mortgage",  "inspiring",  "withdraw",  "knick",  "gust",  "hothouse",  "gown", 
+ "canal",  "nourishing",  "lions",  "opaque",  "academy",  "achieve",  "imagination",  "elove",  "commotion",  "basic", 
+ "earthly",  "onion",  "headlight",  "valley",  "hot",  "repose",  "banner",  "lilac",  "number",  "famille", 
+ "employment",  "desirous",  "digital",  "document",  "attacking",  "attacker",  "prevent",  "connection",  "turpentine",  "electric", 
+ "aeronautics",  "barely",  "overwhelm",  "shot",  "seemingly",  "thoroughly",  "stew",  "decision",  "quietly",  "sustain", 
+ "articulate",  "weight",  "hobble",  "fall",  "turf",  "ballet",  "rust",  "glitter",  "millet",  "diameter", 
+ "immature",  "visiting",  "bathroom",  "safer",  "reel",  "cultural",  "thaw",  "butler",  "verge",  "ultimately", 
+ "comfy",  "alphabet",  "vivid",  "virginity",  "timid",  "flattering",  "modification",  "6heavenly",  "employer",  "uncomfortable", 
+]
+
+
+document.addEventListener('keydown', function(event) {
+if (event.key === 'ArrowRight') { // Если нажали Enter
+window.location.href = "!_700-9000_ESC.html"; // Переход на ссылку-заготовку
+event.preventDefault(); // Предотвращаем действие по умолчанию, если это поле ввода
+}
+});
+
+
+  </script>
+  <button onclick="startGame()">Старт</button>
+  <script src="/home/george/Документы/проекты /1_cards/языки/английский/слепая печать/input/2_functions.js"></script>
+
+</body>
+</html>
