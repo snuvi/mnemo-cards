@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome</title>
+<link href="https://fonts.googleapis.com/css?family=Gochi+Hand&display=swap" rel="stylesheet">
+<!-- <link href="styles.css" rel="stylesheet"> -->
+<link rel="stylesheet" href="/3_cards/css/guest.css">
+<link rel="stylesheet" href="/3_cards/css/normalize.css">
+<link rel="stylesheet" href="/3_cards/css/index_guest.css">
+</head>
+
+<body>
+<button>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <a href="3_cards/lang-rus_version/main-menu_rus_2.html">Wellcome</a>
+</button>
+
+<script>
+  // Получаем ссылку на кнопку "Welcome"
+  const welcomeButton = document.querySelector('button a');
+
+  // Добавляем обработчик события keydown на документ
+  document.addEventListener('keydown', function(event) {
+    // Проверяем, было ли нажато Enter
+    if (event.key === 'Enter') {
+      // Имитируем клик на кнопке "Welcome"
+      welcomeButton.click();
+    }
+  });
+</script>
+</body>
+</html>

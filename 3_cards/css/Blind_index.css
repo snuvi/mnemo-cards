@@ -1,0 +1,60 @@
+body {
+    background-color: #c6c4e9;
+  }
+  
+  /* Стили контейнера */
+  .buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    height: 50px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 5px; /* Уменьшаем отступ снизу вдвое */
+  }
+  
+  /* Стили кнопок */
+  .button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    margin: 5px; /* Уменьшаем отступы между кнопками вдвое */
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  /* Стили подсветки кнопок */
+  .highlight {
+    background-color: #ffff00;
+  }
+  
+  /* Стили кнопки "На главную" */
+  .go-to-home-button {
+    display: block;
+    width: 150px;
+    height: 40px;
+    background-color: #D3D3D3;
+    margin: 20px auto; /* Уменьшаем отступы сверху и снизу вдвое */
+    line-height: 40px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+  }
+  
+  /* Стили надписи */
+  .words-label {
+    text-align: center;
+    margin-top: 80px; /* Уменьшаем отступ сверху вдвое */
+    margin-bottom: 15px; /* Уменьшаем отступ снизу вдвое */
+    font-size: 18px; /* Размер шрифта надписи */
+  }
+  
