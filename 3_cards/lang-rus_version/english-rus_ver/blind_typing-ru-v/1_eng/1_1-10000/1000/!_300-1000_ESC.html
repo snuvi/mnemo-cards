@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Слепая печать</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css"/>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <h1>Слепая печать</h1>
+    <p>300-1000</p>
+
+    <!-- Верхние кнопки "По порядку", "Рандомно", "Сотня" -->
+    <div class="go-to-top-button-container">
+        <a href="#" class="go-to-home-button" onclick="selectMode(this, showOrderedWords); focusInput()">По порядку</a>
+        <a href="#" class="go-to-home-button" onclick="selectMode(this, showRandomChunk); focusInput()">Рандомно по 10</a>
+        <a href="#" class="go-to-home-button" onclick="selectMode(this, startHundredMode)">Рандомно 100</a>
+    </div>
+
+    <p id="wordSet"></p>
+    <div id="word"></div>
+    <input type="text" id="input" autofocus>
+    <div id="result"></div>
+
+    <!-- Кнопки "В меню" и "На главную" -->
+    <div class="go-to-top-button-container">
+        <a href="#" class="go-to-top-button">В меню</a>
+        <a href="#" class="go-to-home-button">На главную</a>
+    </div>
+
+    <!-- Кнопка Старт -->
+    <button class="go-to-home-button" onclick="startGame()">Старт</button>
+
+    <div class="pickr"></div>
+
+    <div class="color-buttons-container">
+        <div class="color-buttons-1">
+            <div class="color-button" data-index="0" data-row="1" style="background-color: #9191B1;"></div>
+            <div class="color-button" data-index="1" data-row="1" style="background-color: #8cadcb;"></div>
+            <div class="color-button" data-index="2" data-row="1" style="background-color: #8cbecb;"></div>
+            <div class="color-button" data-index="3" data-row="1" style="background-color: #75ccd9;"></div>
+            <div class="color-button" data-index="4" data-row="1" style="background-color: #63c5c5;"></div>
+            <div class="color-button" data-index="5" data-row="1" style="background-color: #2196a6;"></div>
+            <div class="color-button" data-index="6" data-row="1" style="background-color: #008080;"></div>
+            <div class="color-button" data-index="7" data-row="1" style="background-color: #58a2e8;"></div>
+            <div class="color-button" data-index="8" data-row="1" style="background-color: #2e6fab;"></div>
+            <div class="color-button" data-index="9" data-row="1" style="background-color: #7b4baa;"></div>
+        </div>
+
+        <div class="color-buttons">
+            <div class="color-button" data-index="10" data-row="2" style="background-color: #E6E6FA;"></div>
+            <div class="color-button" data-index="11" data-row="2" style="background-color: #E6E6FA;"></div>
+            <div class="color-button" data-index="12" data-row="2" style="background-color: #E6E6FA;"></div>
+            <div class="color-button" data-index="13" data-row="2" style="background-color: #E6E6FA;"></div>
+            <div class="color-button" data-index="14" data-row="2" style="background-color: #E6E6FA;"></div>
+            <div class="color-button" data-index="15" data-row="2" style="background-color: #E6E6FA;"></div>
+            <div class="color-button" data-index="16" data-row="2" style="background-color: #E6E6FA;"></div>
+            <div class="color-button" data-index="17" data-row="2" style="background-color: #E6E6FA;"></div>
+            <div class="color-button" data-index="18" data-row="2" style="background-color: #E6E6FA;"></div>
+            <div class="color-button" data-index="19" data-row="2" style="background-color: #E6E6FA;"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+    <script>
+
+  var words = [
+ "ivory",  "congratulations",  "fixing",  "harshly",  "establishing",  "brilliance",  "explanatory",  "conversation",  "lyrics",  "suffocating",
+ "dwelt",  "grandmother",  "experimental",  "scape",  "equity",  "specialize",  "athletic",  "part",  "indebted",  "waiting",
+ "popularity",  "communist",  "studying",  "wall",  "appoint",  "powerless",  "agitation",  "rapidly",  "establishment",  "leaves",
+ "compound",  "advert",  "occasionally",  "relating",  "exquisite",  "depression",  "appearance",  "annulment",  "tacky",  "fatigue",
+ "delivery",  "evidence",  "subpoena",  "scrambled",  "deacon",  "sniffing",  "living",  "breakup",  "refuse",  "land",
+ "notion",  "buster",  "mad",  "iron",  "abolition",  "ale",  "ferocity",  "record",  "comply",  "goddess",
+ "vital",  "pressure",  "smartly",  "frail",  "starting",  "intercourse",  "whip",  "ditty",  "demeanor",  "squadron",
+ "slant",  "driver",  "survivor",  "shit",  "hen",  "colon",  "utilize",  "observatory",  "degree",  "inaccessible",
+ "patience",  "suicide",  "else",  "pest",  "champion",  "whenever",  "exhume",  "violate",  "particular",  "harmony",
+ "boom",  "reliance",  "ensure",  "finest",  "appetizer",  "effectually",  "raincoat",  "assortment",  "arch",  "convert",
+]
+  
+document.addEventListener('keydown', function(event) {
+if (event.key === 'ArrowRight') { // Если нажали Enter
+window.location.href = "!_400-1000_ESC.html"; // Переход на ссылку-заготовку
+event.preventDefault(); // Предотвращаем действие по умолчанию, если это поле ввода
+}
+});
+
+  </script>
+  <script src="2_functions.js"></script>
+
+</body>
+</html>
